@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>e-Healthcare</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css">
 </head>
 <body>
 <header>
@@ -10,12 +10,12 @@
         <h1>e-Healthcare</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="/static">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Services</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="#">Log in</a></li>
-                <li><a href="#">Sign up</a></li>
+                <li><a href="/login" style="background-color: #F2F2F2; color: #418520; border-radius: 10px;">Log in</a></li>
+                <li><a href="/signin" style="background-color: #F2F2F2; color: #418520; border-radius: 10px;" >Sign up</a></li>
             </ul>
         </nav>
     </div>
@@ -55,7 +55,7 @@
         <h2>Our Doctors</h2>
         <ul>
             <li>
-                <img src="img/doctor1.png" alt="Doctor Name">
+                <img th:src="@{/img/doctor1.webp}" src="../static/img/doctor1.webp" alt="Doctor Name">
                 <div class="doctor-info">
                     <h3>Dr. David Lee</h3>
                     <p>Specialty: Cardiology</p>
@@ -63,7 +63,7 @@
                 </div>
             </li>
             <li>
-                <img src="img/doctor2.webp" alt="Doctor Name">
+                <img th:src="@{/img/doctor2.webp}" src="../static/img/doctor2.webp" alt="Doctor Name">
                 <div class="doctor-info">
                     <h3>Dr. David Lee</h3>
                     <p>Specialty: Pediatrics</p>
@@ -71,7 +71,7 @@
                 </div>
             </li>
             <li>
-                <img src="img/doctor3.webp" alt="Doctor Name">
+                <img th:src="@{/img/doctor3.webp}" src="../static/img/doctor3.webp" alt="Doctor Name">
                 <div class="doctor-info">
                     <h3>Dr. David Lee</h3>
                     <p>Specialty: Pediatrics</p>
@@ -83,7 +83,24 @@
 
 </main>
 <footer>
-    <p>&copy; Hey hey its my curse work</p>
+    <div class="container">
+        <div class="footer-links">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Log in</a></li>
+                <li><a href="#">Sign up</a></li>
+            </ul>
+        </div>
+        <div class="footer-info">
+            <p>e-Healthcare &copy; 2023</p>
+            <p>1234 Main Street, Anytown, Anycountry</p>
+            <p>Phone: (123) 456-7890</p>
+            <p>Email: info@e-healthcare.com</p>
+        </div>
+    </div>
 </footer>
 </body>
 </html>

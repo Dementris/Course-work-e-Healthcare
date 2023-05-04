@@ -25,7 +25,7 @@ a {
 /* Header styles */
 
 header {
-    background-color: #4caf50;
+    background-color: #418520;
     padding: 10px 0;
 }
 
@@ -67,7 +67,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #3e8e41;
+    background-color: #418520;
 }
 
 /* Hero section styles */
@@ -225,4 +225,128 @@ footer {
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 20px;
+}
+
+/* Style for footer section */
+footer {
+    background-color: #F2F2F2;
+    padding: 50px 0;
+    font-size: 14px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+/* Styles for the Login Form */
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.login-form h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-form p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.login-form form label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-form form input[type="text"],
+.login-form form input[type="password"] {
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.login-form form input[type="text"]:focus,
+.login-form form input[type="password"]:focus {
+    outline: none;
+    border-color: #08c;
+}
+
+.login-form form button[type="submit"] {
+    background-color: #418520;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.login-form form button[type="submit"]:hover {
+    background-color: #0066b3;
+}
+
+
+
+.footer-links {
+    flex-basis: 30%;
+}
+
+.footer-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-links li {
+    display: inline-block;
+    margin: 5px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #666;
+}
+
+.footer-links a:hover {
+    color: #2CA8FF;
+}
+
+.footer-info {
+    flex-basis: 60%;
+    text-align: right;
+}
+
+.footer-info p {
+    margin: 0;
+    color: #666;
+    line-height: 1.5;
+}
+
+.footer-info p:last-child {
+    margin-top: 20px;
+}
+
+/* Green color for the footer */
+footer {
+    background-color: #418520;
+}
+
+.footer-links a,
+.footer-info p {
+    color: #FFFFFF;
 }
