@@ -14,7 +14,7 @@ public class SpringSecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests().requestMatchers("/","/static/css/**").permitAll()
+        http.authorizeHttpRequests().requestMatchers("/","/css/**","/img/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
