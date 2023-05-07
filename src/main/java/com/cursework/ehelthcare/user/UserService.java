@@ -1,8 +1,7 @@
-package com.cursework.ehelthcare.model;
+package com.cursework.ehelthcare.user;
 
 import com.cursework.ehelthcare.registration.token.ConfirmationToken;
 import com.cursework.ehelthcare.registration.token.ConfirmationTokenService;
-import com.cursework.ehelthcare.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

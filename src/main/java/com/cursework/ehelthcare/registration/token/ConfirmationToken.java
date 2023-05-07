@@ -1,7 +1,7 @@
 package com.cursework.ehelthcare.registration.token;
 
 
-import com.cursework.ehelthcare.model.User;
+import com.cursework.ehelthcare.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,7 +1,6 @@
-package com.cursework.ehelthcare.repository;
+package com.cursework.ehelthcare.user;
 
 
-import com.cursework.ehelthcare.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

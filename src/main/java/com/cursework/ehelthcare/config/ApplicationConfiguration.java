@@ -1,6 +1,6 @@
 package com.cursework.ehelthcare.config;
 
-import com.cursework.ehelthcare.model.UserService;
+import com.cursework.ehelthcare.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

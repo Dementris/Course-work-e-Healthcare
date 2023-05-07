@@ -1,4 +1,4 @@
-package com.cursework.ehelthcare.model;
+package com.cursework.ehelthcare.user;
 
 
 import jakarta.persistence.*;
