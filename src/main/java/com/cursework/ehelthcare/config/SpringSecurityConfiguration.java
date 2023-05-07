@@ -22,12 +22,14 @@ public class SpringSecurityConfiguration {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("api/v1/registration/**").permitAll()
+                .requestMatchers("/**","registration/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .and()
-                .authenticationProvider(authenticationProvider);
+                .formLogin(form -> form
+                        .defaultSuccessUrl("/account/home")
+                        .loginPage("/login"))
+                .authenticationProvider(authenticationProvider)
+                .logout(logout -> logout.deleteCookies("dummyCookies"));
         return http.build();
     }
 
