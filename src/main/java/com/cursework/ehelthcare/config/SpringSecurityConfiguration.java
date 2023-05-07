@@ -1,4 +1,4 @@
-package com.cursework.ehelthcare;
+package com.cursework.ehelthcare.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
