@@ -36,9 +36,9 @@ To run the e-Healthcare website locally, follow these steps:
 
 1. Clone the repository to your local machine using the following command:
 
-'''
+``` bash
 git clone https://github.com/Dementris/Curse-work-e-Healthcare.git
-'''
+```
 
 2. Ensure that you have Java Development Kit (JDK) and PostgreSQL installed on your machine.
 
