@@ -6,27 +6,17 @@
   <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css" type="text/css">
 </head>
 <body>
-<header>
-  <div class="container">
-    <h1>e-Healthcare</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#" style="background-color: #F2F2F2; color: #418520; border-radius: 10px;">Log in</a></li>
-        <li><a href="#" style="background-color: #F2F2F2; color: #418520; border-radius: 10px;" >Sign up</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+
+<div th:replace="fragments/header.html :: header"></div>
 
 <main>
   <div class="login-form">
     <h2>Welcome Back!</h2>
     <p>Please enter your login information below.</p>
-
+    <div class="error-message" th:if="${param.error}">
+      Invalid username and password.</div>
+    <div class="error-message" th:if="${param.logout}">
+      You have been logged out.</div>
     <form th:action="@{/login}" method="post">
       <label for="username">Email:</label>
       <input type="text" id="username" name="username" required>
@@ -38,5 +28,6 @@
     </form>
   </div>
 </main>
+<div th:replace="fragments/footer.html :: footer"></div>
 </body>
 </html>

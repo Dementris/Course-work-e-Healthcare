@@ -5,21 +5,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css" type="text/css">
 </head>
 <body>
-<header>
-    <div class="container">
-        <h1>e-Healthcare</h1>
-        <nav>
-            <ul>
-                <li><a href="/static">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="/login" style="background-color: #F2F2F2; color: #418520; border-radius: 10px;">Log in</a></li>
-                <li><a href="/signin" style="background-color: #F2F2F2; color: #418520; border-radius: 10px;" >Sign up</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<div th:replace="fragments/header.html :: header"></div>
 <main>
     <section class="boxes">
         <h2>Get the healthcare you need from the comfort of your home</h2>
@@ -82,25 +68,6 @@
     </section>
 
 </main>
-<footer>
-    <div class="container">
-        <div class="footer-links">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Log in</a></li>
-                <li><a href="#">Sign up</a></li>
-            </ul>
-        </div>
-        <div class="footer-info">
-            <p>e-Healthcare &copy; 2023</p>
-            <p>1234 Main Street, Anytown, Anycountry</p>
-            <p>Phone: (123) 456-7890</p>
-            <p>Email: info@e-healthcare.com</p>
-        </div>
-    </div>
-</footer>
+<div th:replace="fragments/footer.html :: footer"></div>
 </body>
 </html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Success</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css" type="text/css">
+</head>
+<body>
+<div th:replace="fragments/header.html :: header"></div>
+
+<main>
+    <div class="info-template">
+        <h2>Confirmation Successful!</h2>
+        <p>Congratulations! Your email has been successfully confirmed. Your account is now active and ready to use. Thank you for completing the email verification process.</p>
+    </div>
+</main>
+
+<div th:replace="fragments/footer.html :: footer"></div>
+
+</body>
+</html>
