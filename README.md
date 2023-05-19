@@ -30,7 +30,6 @@ The e-Healthcare website offers the following features:
 - Lombok
 
 ## Getting Started
-## Getting Started
 
 To run the e-Healthcare website locally, follow these steps:
 
@@ -46,9 +45,11 @@ git clone https://github.com/Dementris/Curse-work-e-Healthcare.git
 
 4. Update the database connection properties in the `application.properties` file to match your PostgreSQL configuration.
 
-5. Build the project using Maven.
+5. Install and set up [MailDev](https://github.com/maildev/maildev) for email testing during development. MailDev is a dummy SMTP server that allows you to catch and view emails sent by the application. You can follow the installation instructions provided in the MailDev repository.
 
-6. Run the application and access it in your web browser by navigating to `http://localhost:8080`.
+6. Build the project using Maven.
+
+7. Run the application and access it in your web browser by navigating to `http://localhost:8080`.
 
 
 ## License
