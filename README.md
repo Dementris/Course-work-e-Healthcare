@@ -1,8 +1,22 @@
-# Curse-work-e-Healthcare
+# e-Healthcare Website with Java and Spring
 
-# e-Healthcare Website
+This repository contains the source code and documentation for an e-Healthcare website developed using Java and the Spring framework. The website provides various functionalities to manage healthcare-related activities and services.
 
-This is an e-Healthcare website that allows users to make appointments with doctors, view prescribed medication, and enables doctors to access the client's medical history.
+## Features
+
+The e-Healthcare website offers the following features:
+
+1. **User Registration and Authentication**: Users can register for an account on the website and authenticate themselves to access different functionalities.
+
+2. **Patient Management**: The website allows users to manage patient records, including their personal information, medical history, and appointments.
+
+3. **Doctor Management**: Users with administrative privileges can manage doctor profiles, including their specialization, availability, and appointment schedules.
+
+4. **Appointment Booking**: Patients can book appointments with available doctors through the website. The system ensures that appointments do not clash with existing bookings.
+
+5. **Prescription Management**: Doctors can create and manage prescriptions for their patients, including details of medications, dosage instructions, and any additional notes.
+
+6. **Medical History Tracking**: Patients can view and track their medical history, including past appointments, diagnoses, and prescribed medications.
 
 ## Technologies Used
 
@@ -16,16 +30,29 @@ This is an e-Healthcare website that allows users to make appointments with doct
 - Lombok
 
 ## Getting Started
+## Getting Started
 
-1. Clone the repository.
-2. Configure the database connection in the application.properties file.
-3. Build and run the application.
-4. Access the website in your web browser.
+To run the e-Healthcare website locally, follow these steps:
 
-## Contributing
+1. Clone the repository to your local machine using the following command:
 
-Contributions are welcome! Please fork the repository and submit a pull request.
+'''
+git clone https://github.com/Dementris/Curse-work-e-Healthcare.git
+'''
+
+2. Ensure that you have Java Development Kit (JDK) and PostgreSQL installed on your machine.
+
+3. Configure the PostGreSQL database by creating a new database and executing the SQL scripts provided in the `database` folder.
+
+4. Update the database connection properties in the `application.properties` file to match your PostgreSQL configuration.
+
+5. Build the project using Maven.
+
+6. Run the application and access it in your web browser by navigating to `http://localhost:8080`.
+
 
 ## License
 
-This project is licensed under the GPL-3.0 License.
+This project is licensed under the [GNU General Public License v3.0](LICENCE.md). Feel free to modify and distribute the codebase as per the terms of the license.
+
+
