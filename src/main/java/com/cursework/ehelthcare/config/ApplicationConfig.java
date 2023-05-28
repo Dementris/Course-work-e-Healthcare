@@ -1,6 +1,7 @@
 package com.cursework.ehelthcare.config;
 
 import com.cursework.ehelthcare.user.UserRepository;
+import com.cursework.ehelthcare.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,33 +12,24 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 @Configuration
 @EnableGlobalAuthentication
 @AllArgsConstructor
 public class ApplicationConfig {
 
-    private final UserRepository repository;;
+    private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
-    @Bean
-    public UserDetailsService userDetailsService(){
-        return username -> repository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not Found") );
-    }
 
     @Bean
     public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailsService());
+        provider.setUserDetailsService(userService);
         provider.setPasswordEncoder(passwordEncoder.bCryptPasswordEncoder());
         return provider;
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
-        return configuration.getAuthenticationManager();
-    }
 
 }
