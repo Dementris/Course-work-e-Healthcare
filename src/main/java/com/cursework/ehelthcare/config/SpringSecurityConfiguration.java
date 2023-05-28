@@ -18,15 +18,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SpringSecurityConfiguration {
 
-    private final UserService userService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    public AuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userService);
-        provider.setPasswordEncoder(bCryptPasswordEncoder);
-        return provider;
-    }
-
+    private final AuthenticationProvider provider;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -36,9 +28,9 @@ public class SpringSecurityConfiguration {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin(form -> form
-                        .defaultSuccessUrl("/account/home")
+                        .defaultSuccessUrl("/account/user")
                         .loginPage("/login"))
-                .authenticationProvider(authenticationProvider())
+                .authenticationProvider(provider)
                 .logout(logout -> logout.deleteCookies("dummyCookies"));
         return http.build();
     }
