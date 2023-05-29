@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
   <title>User Home Page</title>
 </head>
 <body>
 <h1>Welcome,!</h1>
-<p>Email: </p>
+<p th:text="*{email}">Email: </p>
 <!-- Add user-specific content here -->
 </body>
 </html>

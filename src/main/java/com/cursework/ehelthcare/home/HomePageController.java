@@ -1,7 +1,11 @@
 package com.cursework.ehelthcare.home;
 
+import com.cursework.ehelthcare.user.UserRole;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
@@ -13,16 +17,16 @@ public class HomePageController {
         return "index";
     }
 
-    @GetMapping("/account/user")
-    public String getUser(){
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.println(email);
-        return "user-home";
-    }
-
     @GetMapping("/login")
     public String login(){
         return "login";
+    }
+
+    @GetMapping("/getRoles")
+    public String rdeirectToHome(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication.getAuthorities());
+        return "user-home";
     }
 
 
