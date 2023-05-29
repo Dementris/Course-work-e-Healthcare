@@ -1,5 +1,6 @@
 package com.cursework.ehelthcare.config;
 
+import com.cursework.ehelthcare.auth.AuthenticationResponse;
 import com.cursework.ehelthcare.user.UserService;
 import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -38,7 +40,7 @@ public class SpringSecurityConfiguration{
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/registration/**", "/", "/css/**", "/api/v1/auth/**")
+                .requestMatchers("/registration/**", "/", "/css/**", "/login/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -48,16 +50,17 @@ public class SpringSecurityConfiguration{
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .formLogin()
-                .loginPage("/login").permitAll()
-                .loginProcessingUrl("/api/v1/auth/authenticate")
-                .defaultSuccessUrl("/api/v1/demo-controller")
-                .and()
                 .logout()
-                .logoutUrl("/api/v1/auth/logout")
+                .logoutUrl("/login/logout")
+                .logoutSuccessUrl("/login/form")
                 .addLogoutHandler(logoutHandler)
                 .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext());
         return http.build();
+    }
+
+    @Bean
+    public HttpHeaders headers(){
+        return new HttpHeaders();
     }
 
 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Home</title>
+  <link rel="stylesheet" th:href="@{/css/home.css}" href="../static/css/home.css" type="text/css">
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>User Home</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Make Appointment</a></li>
+        <li><a href="#">View Prescriptions</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<p>Access Token: <span th:text="${accessToken}"></span></p>
+<p>Refresh Token: <span th:text="${refreshToken}"></span></p>
+
+<section class="avatar-section">
+  <div class="container">
+    <h2>Avatar</h2>
+    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Random Avatar Image">
+  </div>
+</section>
+
+
+<section class="personal-info">
+  <div class="container">
+    <h2>Personal Information</h2>
+    <p>First Name: <span th:text="${user.firstName}"></span></p>
+    <p>Last Name: <span th:text="${user.lastName}"></span></p>
+    <p>Email: <span th:text="${user.email}"></span></p>
+  </div>
+</section>
+
+<section class="appointment-section">
+  <div class="container">
+    <h2>Make an Appointment</h2>
+    <p>Please select a doctor and schedule your appointment.</p>
+    <form class="appointment-form">
+      <div class="form-group-doctor">
+        <label for="doctor-select">Doctor:</label>
+        <select id="doctor-select" name="doctor" class="form-control-doctor">
+          <option value="doctor1">Doctor 1</option>
+          <option value="doctor2">Doctor 2</option>
+          <option value="doctor3">Doctor 3</option>
+        </select>
+      </div>
+      <div class="form-group-date">
+        <label for="date-input">Date:</label>
+        <input type="date" id="date-input" name="date" class="form-control-date">
+      </div>
+      <div class="form-group-time">
+        <label for="time-input">Time:</label>
+        <input type="time" id="time-input" name="time" class="form-control-time">
+      </div>
+      <div class="form-group-notes">
+        <label for="notes-textarea">Notes:</label>
+        <textarea id="notes-textarea" name="notes" rows="4" class="form-control-notes"></textarea>
+      </div>
+      <button type="submit" class="btn-appointment">Book Appointment</button>
+    </form>
+  </div>
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-info">
+      <p>&copy; 2023 Your Website. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
