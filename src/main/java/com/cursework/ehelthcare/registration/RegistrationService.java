@@ -1,6 +1,11 @@
 package com.cursework.ehelthcare.registration;
 
+import com.cursework.ehelthcare.auth.AuthenticationResponse;
+import com.cursework.ehelthcare.config.JwtService;
 import com.cursework.ehelthcare.email.EmailSender;
+import com.cursework.ehelthcare.token.Token;
+import com.cursework.ehelthcare.token.TokenRepository;
+import com.cursework.ehelthcare.token.TokenType;
 import com.cursework.ehelthcare.user.User;
 import com.cursework.ehelthcare.user.UserRole;
 import com.cursework.ehelthcare.user.UserService;
@@ -20,19 +25,27 @@ public class RegistrationService {
     private final EmailValidator emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
+
+    private final TokenRepository tokenRepository;
+
+    private final JwtService jwtService;
+
     public String register(RegistrationRequest request) {
         boolean isValidEmail = emailValidator.test(request.getEmail());
         if (!isValidEmail) {
             throw new IllegalStateException("email not valid");
         }
-        String token = userService.singupUser(new User(
+        var user = new User(
                 request.getFirstName(),
                 request.getLastName(),
                 request.getEmail(),
                 request.getPassword(),
-                UserRole.ROLE_USER
-
-        ));
+                UserRole.ROLE_USER);
+        String token = userService.singupUser(user);
+        var jwtToken = jwtService.generateToken(user);
+        var refreshToken = jwtService.generateRefreshToken(user);
+        saveUserToken(user,jwtToken);
+        AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
         String link = "http://localhost:8080/registration/confirm?token="+token;
         emailSender.send(request.getEmail(),buildEmail(request.getFirstName(),link));
         return token;
@@ -67,6 +80,17 @@ public class RegistrationService {
                 "    </div>\n" +
                 "</div>";
 
+    }
+
+    private void saveUserToken(User user, String jwtToken) {
+        var token = Token.builder()
+                .user(user)
+                .token(jwtToken)
+                .tokenType(TokenType.BEARER)
+                .expired(false)
+                .revoked(false)
+                .build();
+        tokenRepository.save(token);
     }
 }
 

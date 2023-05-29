@@ -17,17 +17,6 @@ public class HomePageController {
         return "index";
     }
 
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
-
-    @GetMapping("/getRoles")
-    public String rdeirectToHome(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(authentication.getAuthorities());
-        return "user-home";
-    }
 
 
 }

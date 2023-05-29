@@ -42,8 +42,6 @@ public class UserService implements UserDetailsService {
         ConfirmationToken confirmationToken = new ConfirmationToken(
                 token, LocalDateTime.now(), LocalDateTime.now().plusMinutes(15),user);
         confirmationTokenService.saveConfirmationToken(confirmationToken);
-
-        //TODO: SEND EMAIL
         return token;
     }
 
