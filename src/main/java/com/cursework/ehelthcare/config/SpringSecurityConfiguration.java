@@ -3,6 +3,7 @@ package com.cursework.ehelthcare.config;
 import com.cursework.ehelthcare.auth.AuthenticationResponse;
 import com.cursework.ehelthcare.user.UserService;
 import jakarta.servlet.Filter;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -40,8 +41,12 @@ public class SpringSecurityConfiguration{
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/registration/**", "/", "/css/**", "/login/**")
+                .requestMatchers("/registration/**", "/", "/css/**", "/login/**", "/page")
                 .permitAll()
+                .requestMatchers("/page/dir/**").permitAll()
+                .requestMatchers("/client/home/**").permitAll()
+                .requestMatchers("/doctor/home/**").permitAll()
+                .requestMatchers("/login/logout").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -50,6 +55,7 @@ public class SpringSecurityConfiguration{
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilter(jwtAuthFilter)
                 .logout()
                 .logoutUrl("/login/logout")
                 .logoutSuccessUrl("/login/form")
@@ -57,14 +63,6 @@ public class SpringSecurityConfiguration{
                 .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext());
         return http.build();
     }
-
-    @Bean
-    public HttpHeaders headers(){
-        return new HttpHeaders();
-    }
-
-
-
 
 
 }

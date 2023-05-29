@@ -34,7 +34,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
       @NonNull HttpServletResponse response,
       @NonNull FilterChain filterChain
   ) throws ServletException, IOException {
-    if (request.getServletPath().contains("/login")) {
+    if (request.getServletPath().contains("/login/authenticate")) {
       filterChain.doFilter(request, response);
       return;
     }
@@ -64,6 +64,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(authToken);
       }
     }
+
+
     filterChain.doFilter(request, response);
   }
 }

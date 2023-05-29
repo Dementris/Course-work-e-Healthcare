@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Home</title>
+  <link rel="stylesheet" th:href="@{/css/home.css}" href="../static/css/home.css" type="text/css">
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Admin Home</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">View Clients</a></li>
+        <li><a href="#">Manage Appointments</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<section class="avatar-section">
+  <div class="container">
+    <h2>Avatar</h2>
+    <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Random Avatar Image">
+  </div>
+</section>
+
+
+<section class="personal-info">
+  <div class="container">
+    <h2>Personal Information</h2>
+    <p>First Name: <span th:text="${user.firstName}"></span></p>
+    <p>Last Name: <span th:text="${user.lastName}"></span></p>
+    <p>Email: <span th:text="${user.email}"></span></p>
+  </div>
+</section>
+
+<section class="clients-section">
+  <div class="container">
+    <h2>Clients</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Client ID</th>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="client : ${clients}">
+        <td th:text="${client.id}"></td>
+        <td th:text="${client.firstName}"></td>
+        <td th:text="${client.lastName}"></td>
+        <td th:text="${client.email}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-info">
+      <p>&copy; 2023 Your Website. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

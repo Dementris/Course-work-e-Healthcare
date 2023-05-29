@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 
@@ -22,9 +23,6 @@ import java.io.IOException;
 public class AuthenticationController {
 
   private final AuthenticationService service;
-  private final JwtService jwtService;
-
-  private final UserRepository repository;
 
   @GetMapping("/form")
   public String showLoginForm(Model model) {
@@ -33,17 +31,16 @@ public class AuthenticationController {
   }
 
   @PostMapping("/authenticate")
-  public String authenticate(
+  public RedirectView authenticate(
           @ModelAttribute("authenticationRequest") AuthenticationRequest request,
-          Model model
+          HttpServletRequest httpServletRequest,
+          HttpServletResponse response
   ) {
     var token = service.authenticate(request);
-    var email = jwtService.extractUsername(token.getAccessToken());
-    var user = repository.findByEmail(email).orElseThrow();
-    model.addAttribute("user",user);
-    model.addAttribute("accessToken", token.getAccessToken());
-    model.addAttribute("refreshToken", token.getRefreshToken());
-    return "home";
+    System.out.println(token.getAccessToken());
+    httpServletRequest.getSession().setAttribute("access_token", token.getAccessToken());
+
+    return new RedirectView("/page/dir?access_token="+token.getAccessToken());
   }
 
   @PostMapping("/refresh-token")
