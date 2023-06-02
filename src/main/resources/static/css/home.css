@@ -64,119 +64,6 @@ header ul li a {
     margin-bottom: 20px;
 }
 
-/* Appointment section styles */
-.appointment-section {
-    background-color: #f9f9f9;
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.appointment-section h2 {
-    margin-bottom: 40px;
-    font-size: 24px;
-    color: #418520;
-}
-
-.appointment-form {
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.appointment-form h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #418520;
-}
-
-.appointment-form p {
-    font-size: 28px;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #666;
-}
-
-.appointment-form label {
-    font-size: 28px;
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.appointment-form input[type="text"],
-.appointment-form input[type="email"],
-.appointment-form select {
-    width: 100%;
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-}
-
-.appointment-form input[type="text"]:focus,
-.appointment-form input[type="email"]:focus,
-.appointment-form select:focus {
-    outline: none;
-    border-color: #08c;
-}
-
-.form-group-date input[type="date"],
-.form-group-time input[type="time"] {
-    width: 100%;
-    font-size: 20px; /* Increased font size */
-    padding: 12px; /* Increased padding */
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-}
-
-.appointment-form textarea {
-    width: 100%;
-    font-size: 26px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-    resize: vertical;
-}
-
-.appointment-form textarea:focus {
-    outline: none;
-    border-color: #08c;
-}
-
-.appointment-form button[type="submit"] {
-    background-color: #418520;
-    color: #fff;
-    font-size: 28px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-.appointment-form button[type="submit"]:hover {
-    background-color: #0066b3;
-}
-
-.appointment-form .success-message {
-    color: #418520;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.appointment-form .error-message {
-    color: red;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 10px;
-}
 
 /* Footer styles */
 footer {
@@ -261,6 +148,50 @@ footer ul li a {
     background-color: #f5f5f5;
 }
 
+/* Form Container Style */
+.form-container {
+    margin-top: 20px;
+}
+
+/* Label Style */
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* Select Style */
+.form-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    font-size: 16px;
+}
+
+/* Input Style */
+.form-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    font-size: 16px;
+}
+
+/* Submit Button Style */
+.form-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.form-submit:hover {
+    background-color: #45a049;
+}
 
 
 

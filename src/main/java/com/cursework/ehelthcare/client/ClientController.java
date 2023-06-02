@@ -23,16 +23,20 @@ public class ClientController {
 
     private final HttpServletRequest httpServletRequest;
 
+    private final AppointmentRepository appointmentRepository;
+
 
     @GetMapping("/home")
     public String getClientPage(@RequestParam String access_token, Model model){
         var email = jwtService.extractUsername(access_token);
         var user = repository.findByEmail(email).orElseThrow();
         List<User> doctors = repository.findAllByUserRole(UserRole.ROLE_ADMIN);
+        List<Appointment> appointmentList = appointmentRepository.findAllByUser(user);
         model.addAttribute("token",access_token);
         model.addAttribute("doctors", doctors);
         model.addAttribute("appointment", new Appointment());
         model.addAttribute("user",user);
+        model.addAttribute("table",appointmentList);
         return "home";
     }
 

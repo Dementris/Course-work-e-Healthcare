@@ -12,8 +12,6 @@
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">Make Appointment</a></li>
-        <li><a href="#">View Prescriptions</a></li>
         <li><a href="#">Logout</a></li>
       </ul>
     </nav>
@@ -38,21 +36,18 @@
   </div>
 </section>
 
-<section class="appointment-section">
+<div class="container">
   <h1>New Appointment</h1>
-  <form class="appointment-form" th:action="@{/appointments}" th:object="${appointment}" method="post">
-    <label for="doctor">Doctor:</label>
-    <select id="doctor" name="doctor.id">
+  <form class="form-container" th:action="@{|/appointments/new?access_token=${token}|}" th:object="${appointment}" method="post">
+    <label class="form-label" for="doctor">Doctor:</label>
+    <select class="form-select" id="doctor" name="doctor.id">
       <option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.firstName}"></option>
     </select><br>
-    <label for="dateTime">Date and Time:</label>
-    <input id="dateTime" type="datetime-local" name="dateTime"><br>
-    <input type="submit" value="Submit">
+    <label class="form-label" for="dateTime">Date and Time:</label>
+    <input class="form-input" id="dateTime" type="datetime-local" name="dateTime"><br>
+    <input class="form-submit" type="submit" value="Submit">
   </form>
-</section>
-
-
-<a th:href="@{|/appointments/new?access_token=${token}|}" >New appointment</a>
+</div>
 
 <footer>
   <div class="container">

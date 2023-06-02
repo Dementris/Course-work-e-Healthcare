@@ -46,6 +46,7 @@ public class SpringSecurityConfiguration{
                 .requestMatchers("/page/dir/**").permitAll()
                 .requestMatchers("/client/home/**").permitAll()
                 .requestMatchers("/doctor/home/**").permitAll()
+                .requestMatchers("/doctor/appointments/**").permitAll()
                 .requestMatchers("/login/logout").permitAll()
                 .requestMatchers("/appointments/new/**").permitAll()
                 .anyRequest()

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Success</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css" type="text/css">
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>User Home</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="info-template">
+    <h2>Appointment Successful!</h2>
+    <p>Congratulations! Your appointment is successful. Wait for confirmation via email</p>
+  </div>
+</main>
+
+<div th:replace="fragments/footer.html :: footer"></div>
+
+</body>
+</html>

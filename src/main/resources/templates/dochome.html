@@ -48,14 +48,25 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
+        <th>Date and Time</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="client : ${clients}">
         <td th:text="${client.id}"></td>
-        <td th:text="${client.firstName}"></td>
-        <td th:text="${client.lastName}"></td>
-        <td th:text="${client.email}"></td>
+        <td th:text="${client.user.firstName}"></td>
+        <td th:text="${client.user.lastName}"></td>
+        <td th:text="${client.user.email}"></td>
+        <td th:text="${client.dateTime}"></td>
+        <td th:text="${client.confirmed}"></td>
+        <td>
+          <form th:action="@{/doctor/appointments/{appointmentId}/confirm(appointmentId=${client.id})}" method="post">
+            <input type="submit" value="Confirm">
+          </form>
+          <form th:action="@{/doctor/appointments/{appointmentId}/decline(appointmentId=${client.id})}" method="post">
+            <input type="submit" value="Decline">
+          </form>
+        </td>
       </tr>
       </tbody>
     </table>

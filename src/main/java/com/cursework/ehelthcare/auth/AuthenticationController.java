@@ -40,7 +40,6 @@ public class AuthenticationController {
     var token = service.authenticate(request);
     System.out.println(token.getAccessToken());
     httpServletRequest.getSession().setAttribute("access_token", token.getAccessToken());
-
     return new RedirectView("/page/dir?access_token="+token.getAccessToken());
   }
 
