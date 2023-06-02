@@ -24,6 +24,8 @@ public class AuthenticationController {
 
   private final AuthenticationService service;
 
+  private final HttpServletRequest httpServletRequest;
+
   @GetMapping("/form")
   public String showLoginForm(Model model) {
     model.addAttribute("authenticationRequest", new AuthenticationRequest());
@@ -33,7 +35,6 @@ public class AuthenticationController {
   @PostMapping("/authenticate")
   public RedirectView authenticate(
           @ModelAttribute("authenticationRequest") AuthenticationRequest request,
-          HttpServletRequest httpServletRequest,
           HttpServletResponse response
   ) {
     var token = service.authenticate(request);

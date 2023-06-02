@@ -39,36 +39,20 @@
 </section>
 
 <section class="appointment-section">
-  <div class="container">
-    <h2>Make an Appointment</h2>
-    <p>Please select a doctor and schedule your appointment.</p>
-    <form class="appointment-form">
-      <div class="form-group-doctor">
-        <label for="doctor-select">Doctor:</label>
-        <select id="doctor-select" name="doctor" class="form-control-doctor">
-          <option value="doctor1">Doctor 1</option>
-          <option value="doctor2">Doctor 2</option>
-          <option value="doctor3">Doctor 3</option>
-        </select>
-      </div>
-      <div class="form-group-date">
-        <label for="date-input">Date:</label>
-        <input type="date" id="date-input" name="date" class="form-control-date">
-      </div>
-      <div class="form-group-time">
-        <label for="time-input">Time:</label>
-        <input type="time" id="time-input" name="time" class="form-control-time">
-      </div>
-      <div class="form-group-notes">
-        <label for="notes-textarea">Notes:</label>
-        <textarea id="notes-textarea" name="notes" rows="4" class="form-control-notes"></textarea>
-      </div>
-      <button type="submit" class="btn-appointment">Book Appointment</button>
-    </form>
-  </div>
+  <h1>New Appointment</h1>
+  <form class="appointment-form" th:action="@{/appointments}" th:object="${appointment}" method="post">
+    <label for="doctor">Doctor:</label>
+    <select id="doctor" name="doctor.id">
+      <option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.firstName}"></option>
+    </select><br>
+    <label for="dateTime">Date and Time:</label>
+    <input id="dateTime" type="datetime-local" name="dateTime"><br>
+    <input type="submit" value="Submit">
+  </form>
 </section>
 
 
+<a th:href="@{|/appointments/new?access_token=${token}|}" >New appointment</a>
 
 <footer>
   <div class="container">

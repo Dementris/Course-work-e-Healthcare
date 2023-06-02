@@ -47,6 +47,7 @@ public class SpringSecurityConfiguration{
                 .requestMatchers("/client/home/**").permitAll()
                 .requestMatchers("/doctor/home/**").permitAll()
                 .requestMatchers("/login/logout").permitAll()
+                .requestMatchers("/appointments/new/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

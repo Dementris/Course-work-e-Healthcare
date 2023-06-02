@@ -1,13 +1,18 @@
 package com.cursework.ehelthcare.client;
 
+import com.cursework.ehelthcare.appointment.Appointment;
+import com.cursework.ehelthcare.appointment.AppointmentRepository;
 import com.cursework.ehelthcare.config.JwtService;
+import com.cursework.ehelthcare.user.User;
 import com.cursework.ehelthcare.user.UserRepository;
+import com.cursework.ehelthcare.user.UserRole;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -16,11 +21,20 @@ public class ClientController {
     private final UserRepository repository;
     private final JwtService jwtService;
 
+    private final HttpServletRequest httpServletRequest;
+
+
     @GetMapping("/home")
     public String getClientPage(@RequestParam String access_token, Model model){
         var email = jwtService.extractUsername(access_token);
         var user = repository.findByEmail(email).orElseThrow();
+        List<User> doctors = repository.findAllByUserRole(UserRole.ROLE_ADMIN);
+        model.addAttribute("token",access_token);
+        model.addAttribute("doctors", doctors);
+        model.addAttribute("appointment", new Appointment());
         model.addAttribute("user",user);
         return "home";
     }
+
+
 }
