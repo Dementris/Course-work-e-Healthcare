@@ -61,10 +61,10 @@
         <td th:text="${client.confirmed}"></td>
         <td>
           <form th:action="@{/doctor/appointments/{appointmentId}/confirm(appointmentId=${client.id})}" method="post">
-            <input type="submit" value="Confirm">
+            <input type="submit" value="Confirm" th:disabled="${client.confirmed}">
           </form>
           <form th:action="@{/doctor/appointments/{appointmentId}/decline(appointmentId=${client.id})}" method="post">
-            <input type="submit" value="Decline">
+            <input type="submit" value="Decline" th:disabled="${client.confirmed}">
           </form>
         </td>
       </tr>

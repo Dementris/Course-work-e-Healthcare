@@ -49,6 +49,29 @@
   </form>
 </div>
 
+<div class="container">
+  <h2>Clients</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>To Doctor First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Date and Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${table}">
+      <td th:text="${item.doctor.firstName}"></td>
+      <td th:text="${item.doctor.lastName}"></td>
+      <td th:text="${item.doctor.email}"></td>
+      <td th:text="${item.dateTime}"></td>
+      <td th:text="${item.confirmed}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
 <footer>
   <div class="container">
     <div class="footer-links">

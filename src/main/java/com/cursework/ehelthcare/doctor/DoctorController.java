@@ -4,6 +4,7 @@ import com.cursework.ehelthcare.appointment.Appointment;
 import com.cursework.ehelthcare.appointment.AppointmentRepository;
 import com.cursework.ehelthcare.config.JwtService;
 import com.cursework.ehelthcare.email.EmailSender;
+import com.cursework.ehelthcare.token.TokenRepository;
 import com.cursework.ehelthcare.user.User;
 import com.cursework.ehelthcare.user.UserRepository;
 import com.cursework.ehelthcare.user.UserRole;
@@ -24,6 +25,8 @@ public class DoctorController {
     private final EmailSender emailSender;
     private final AppointmentRepository appointmentRepository;
 
+    private final TokenRepository tokenRepository;
+
     @GetMapping("/home")
     public String getDoctorPage(@RequestParam String access_token, Model model){
         var email = jwtService.extractUsername(access_token);
@@ -43,14 +46,15 @@ public class DoctorController {
                 buildSubmitedEmail(appointment.getDoctor().getFirstName(),
                         appointment.getUser().getFirstName(),
                         appointment.getDateTime().toString()));
-        return "redirect:/doctor/home";
+        String token = tokenRepository.findAllValidTokenByUser(Math.toIntExact(appointment.getDoctor().getId())).get(0).getToken();
+        return "redirect:/doctor/home?access_token="+token;
     }
 
     @PostMapping("/appointments/{appointmentId}/decline")
     public String declineAppointment(@PathVariable("appointmentId") Long appointmentId) {
         Appointment appointment = appointmentRepository.findById(appointmentId).orElseThrow();
         appointmentRepository.delete(appointment);
-        emailSender.send(appointment.getDoctor().getEmail(),
+        emailSender.send(appointment.getUser().getEmail(),
                 buildDeclinedEmail(appointment.getDoctor().getFirstName(),
                         appointment.getUser().getFirstName(),
                         appointment.getDateTime().toString()));
