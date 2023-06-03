@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.security.Principal;
 import java.util.List;
 
+/**
+ * The type Appointment controller.
+ */
 @Controller
 @RequiredArgsConstructor
 public class AppointmentController {
@@ -26,6 +29,13 @@ public class AppointmentController {
     private final JwtService jwtService;
 
 
+    /**
+     * Submit appointment form.
+     *
+     * @param appointment  the appointment
+     * @param access_token the access token
+     * @return the string
+     */
     @PostMapping("/appointments/new")
     public String submitAppointmentForm(@ModelAttribute("appointment") Appointment appointment,
                                         @RequestParam("access_token") String access_token)  {

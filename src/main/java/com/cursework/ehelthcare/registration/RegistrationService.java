@@ -17,6 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
+/**
+ * The type Registration service.
+ */
 @Service
 @AllArgsConstructor
 public class RegistrationService {
@@ -30,6 +33,12 @@ public class RegistrationService {
 
     private final JwtService jwtService;
 
+    /**
+     * Register string.
+     *
+     * @param request the request
+     * @return the string
+     */
     public String register(RegistrationRequest request) {
         boolean isValidEmail = emailValidator.test(request.getEmail());
         if (!isValidEmail) {
@@ -41,6 +50,8 @@ public class RegistrationService {
                 request.getEmail(),
                 request.getPassword(),
                 UserRole.ROLE_USER);
+        user.setGender(request.getGender());
+        user.setDateOfBirth(request.getDateOfBirth());
         String token = userService.singupUser(user);
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
@@ -50,6 +61,13 @@ public class RegistrationService {
         emailSender.send(request.getEmail(),buildEmail(request.getFirstName(),link));
         return token;
     }
+
+    /**
+     * Confirm token string.
+     *
+     * @param token the token
+     * @return the string
+     */
     @Transactional
     public String confirmToken(String token){
         ConfirmationToken confirmationToken = confirmationTokenService.getToken(token)

@@ -25,6 +25,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
+/**
+ * The type Spring security configuration.
+ */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -36,12 +39,19 @@ public class SpringSecurityConfiguration{
     private final AuthenticationProvider authenticationProvider;
 
 
+    /**
+     * Filter chain security filter chain.
+     *
+     * @param http the http
+     * @return the security filter chain
+     * @throws Exception the exception
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/registration/**", "/", "/css/**", "/login/**", "/page")
+                .requestMatchers("/registration/**", "/", "/css/**", "/login/**", "/page", "/img/**")
                 .permitAll()
                 .requestMatchers("/page/dir/**").permitAll()
                 .requestMatchers("/client/home/**").permitAll()
@@ -49,6 +59,7 @@ public class SpringSecurityConfiguration{
                 .requestMatchers("/doctor/appointments/**").permitAll()
                 .requestMatchers("/login/logout").permitAll()
                 .requestMatchers("/appointments/new/**").permitAll()
+                .requestMatchers("/login/form/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

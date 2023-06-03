@@ -1,5 +1,11 @@
 package com.cursework.ehelthcare.token;
 
+/**
+ * The enum Token type.
+ */
 public enum TokenType {
-  BEARER
+    /**
+     * Bearer token type.
+     */
+    BEARER
 }

@@ -10,8 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
 
+/**
+ * The type Home page controller.
+ */
 @Controller
 public class HomePageController {
+    /**
+     * Get home page string.
+     *
+     * @return the string
+     */
     @GetMapping("/")
     public String getHomePage(){
         return "index";

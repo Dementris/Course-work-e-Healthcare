@@ -9,6 +9,9 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+/**
+ * The type Thymeleaf config.
+ */
 @Configuration
 public class ThymeleafConfig implements WebMvcConfigurer {
 
@@ -17,6 +20,11 @@ public class ThymeleafConfig implements WebMvcConfigurer {
         registry.addViewController("/home").setViewName("home"); // Map the "/home" URL to the home.html template
     }
 
+    /**
+     * Template engine spring template engine.
+     *
+     * @return the spring template engine
+     */
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();

@@ -33,6 +33,7 @@
     <p>First Name: <span th:text="${user.firstName}"></span></p>
     <p>Last Name: <span th:text="${user.lastName}"></span></p>
     <p>Email: <span th:text="${user.email}"></span></p>
+    <p>Date of Birth: <span th:text="${user.dateOfBirth}"></span></p>
   </div>
 </section>
 
@@ -49,28 +50,34 @@
   </form>
 </div>
 
-<div class="container">
-  <h2>Clients</h2>
-  <table>
-    <thead>
-    <tr>
-      <th>To Doctor First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Date and Time</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="item : ${table}">
-      <td th:text="${item.doctor.firstName}"></td>
-      <td th:text="${item.doctor.lastName}"></td>
-      <td th:text="${item.doctor.email}"></td>
-      <td th:text="${item.dateTime}"></td>
-      <td th:text="${item.confirmed}"></td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<section class="clients-section">
+  <div class="container">
+    <h2>Appointments</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Date and Time</th>
+        <th>Confirmation</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="item : ${table}">
+        <td th:text="${item.doctor.firstName}"></td>
+        <td th:text="${item.doctor.lastName}"></td>
+        <td th:text="${item.doctor.email}"></td>
+        <td th:text="${item.dateTime}"></td>
+        <td>
+          <span th:text="${item.confirmed} ? 'Confirmed' : 'Unconfirmed'"></span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 
 <footer>
   <div class="container">

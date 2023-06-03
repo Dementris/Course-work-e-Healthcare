@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.view.RedirectView;
 
+/**
+ * The type Personal page controller.
+ */
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(path = "/page")
@@ -30,6 +33,13 @@ public class PersonalPageController {
     private final JwtService jwtService;
     private final UserRepository repository;
 
+    /**
+     * Redirection point redirect view.
+     *
+     * @param access_token the access token
+     * @param model        the model
+     * @return the redirect view
+     */
     @GetMapping("/dir")
     public RedirectView redirectionPoint(@RequestParam String access_token,
                                          Model model){

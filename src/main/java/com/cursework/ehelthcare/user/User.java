@@ -3,13 +3,19 @@ package com.cursework.ehelthcare.user;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 
+/**
+ * The type User.
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -25,11 +31,25 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String password;
+
+    private String gender;
+
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDate dateOfBirth;
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
     private Boolean locked = false;
     private Boolean enabled = false;
 
+    /**
+     * Instantiates a new User.
+     *
+     * @param firstName the first name
+     * @param lastName  the last name
+     * @param email     the email
+     * @param password  the password
+     * @param userRole  the user role
+     */
     public User(String firstName, String lastName, String email, String password, UserRole userRole) {
         this.firstName = firstName;
         this.lastName = lastName;

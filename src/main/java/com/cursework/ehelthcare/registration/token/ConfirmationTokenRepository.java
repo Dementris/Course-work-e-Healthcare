@@ -9,12 +9,28 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+/**
+ * The interface Confirmation token repository.
+ */
 @Repository
 @Transactional(readOnly = true)
 public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationToken, Long> {
 
+    /**
+     * Find by token optional.
+     *
+     * @param token the token
+     * @return the optional
+     */
     Optional<ConfirmationToken> findByToken(String token);
 
+    /**
+     * Update confirmed at int.
+     *
+     * @param token       the token
+     * @param confirmedAt the confirmed at
+     * @return the int
+     */
     @Transactional
     @Modifying
     @Query("UPDATE ConfirmationToken c SET c.confirmedAt = ?2 WHERE c.token = ?1")

@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The type Client controller.
+ */
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(path = "/client")
@@ -26,6 +29,13 @@ public class ClientController {
     private final AppointmentRepository appointmentRepository;
 
 
+    /**
+     * Get client page string.
+     *
+     * @param access_token the access token
+     * @param model        the model
+     * @return the string
+     */
     @GetMapping("/home")
     public String getClientPage(@RequestParam String access_token, Model model){
         var email = jwtService.extractUsername(access_token);

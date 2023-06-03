@@ -17,6 +17,9 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 
+/**
+ * The type Authentication controller.
+ */
 @Controller
 @RequestMapping("/login")
 @RequiredArgsConstructor
@@ -26,13 +29,26 @@ public class AuthenticationController {
 
   private final HttpServletRequest httpServletRequest;
 
-  @GetMapping("/form")
+    /**
+     * Show login form string.
+     *
+     * @param model the model
+     * @return the string
+     */
+    @GetMapping("/form")
   public String showLoginForm(Model model) {
     model.addAttribute("authenticationRequest", new AuthenticationRequest());
     return "login";
   }
 
-  @PostMapping("/authenticate")
+    /**
+     * Authenticate redirect view.
+     *
+     * @param request  the request
+     * @param response the response
+     * @return the redirect view
+     */
+    @PostMapping("/authenticate")
   public RedirectView authenticate(
           @ModelAttribute("authenticationRequest") AuthenticationRequest request,
           HttpServletResponse response
@@ -43,7 +59,14 @@ public class AuthenticationController {
     return new RedirectView("/page/dir?access_token="+token.getAccessToken());
   }
 
-  @PostMapping("/refresh-token")
+    /**
+     * Refresh token.
+     *
+     * @param request  the request
+     * @param response the response
+     * @throws IOException the io exception
+     */
+    @PostMapping("/refresh-token")
   public void refreshToken(
       HttpServletRequest request,
       HttpServletResponse response

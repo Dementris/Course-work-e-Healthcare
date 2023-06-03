@@ -109,12 +109,13 @@ footer ul li a {
     margin-bottom: 20px;
 }
 
-.avatar-image-container {
-    width: 150px;
-    height: 150px;
+ img {
+    display: block;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto;
+    margin: 20px auto;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .avatar-image-container img {
@@ -190,6 +191,34 @@ footer ul li a {
 }
 
 .form-submit:hover {
+    background-color: #45a049;
+}
+
+.appointment-cell {
+    padding: 10px;
+    text-align: center;
+}
+
+.appointment-cell form {
+    display: inline-block;
+}
+
+.appointment-cell input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.appointment-cell input[type="submit"][disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.appointment-cell input[type="submit"]:hover {
     background-color: #45a049;
 }
 

@@ -9,6 +9,9 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+/**
+ * The type Confirmation token.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,6 +35,14 @@ public class ConfirmationToken {
     @JoinColumn(nullable = false, name = "users_id")
     private User user;
 
+    /**
+     * Instantiates a new Confirmation token.
+     *
+     * @param token     the token
+     * @param createAt  the create at
+     * @param expiresAt the expires at
+     * @param user      the user
+     */
     public ConfirmationToken(String token, LocalDateTime createAt, LocalDateTime expiresAt,
                              User user) {
         this.token = token;

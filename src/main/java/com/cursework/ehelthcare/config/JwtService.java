@@ -15,6 +15,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type Jwt service.
+ */
 @Service
 public class JwtService {
 
@@ -25,27 +28,60 @@ public class JwtService {
   @Value("${application.security.jwt.refresh-token.expiration}")
   private long refreshExpiration;
 
-  public String extractUsername(String token) {
+    /**
+     * Extract username string.
+     *
+     * @param token the token
+     * @return the string
+     */
+    public String extractUsername(String token) {
     return extractClaim(token, Claims::getSubject);
   }
 
-  public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+    /**
+     * Extract claim t.
+     *
+     * @param <T>            the type parameter
+     * @param token          the token
+     * @param claimsResolver the claims resolver
+     * @return the t
+     */
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
     final Claims claims = extractAllClaims(token);
     return claimsResolver.apply(claims);
   }
 
-  public String generateToken(UserDetails userDetails) {
+    /**
+     * Generate token string.
+     *
+     * @param userDetails the user details
+     * @return the string
+     */
+    public String generateToken(UserDetails userDetails) {
     return generateToken(new HashMap<>(), userDetails);
   }
 
-  public String generateToken(
+    /**
+     * Generate token string.
+     *
+     * @param extraClaims the extra claims
+     * @param userDetails the user details
+     * @return the string
+     */
+    public String generateToken(
       Map<String, Object> extraClaims,
       UserDetails userDetails
   ) {
     return buildToken(extraClaims, userDetails, jwtExpiration);
   }
 
-  public String generateRefreshToken(
+    /**
+     * Generate refresh token string.
+     *
+     * @param userDetails the user details
+     * @return the string
+     */
+    public String generateRefreshToken(
       UserDetails userDetails
   ) {
     return buildToken(new HashMap<>(), userDetails, refreshExpiration);
@@ -66,7 +102,14 @@ public class JwtService {
             .compact();
   }
 
-  public boolean isTokenValid(String token, UserDetails userDetails) {
+    /**
+     * Is token valid boolean.
+     *
+     * @param token       the token
+     * @param userDetails the user details
+     * @return the boolean
+     */
+    public boolean isTokenValid(String token, UserDetails userDetails) {
     final String username = extractUsername(token);
     return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
   }

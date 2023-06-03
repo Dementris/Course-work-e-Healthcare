@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The type Doctor controller.
+ */
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(path = "/doctor")
@@ -27,6 +30,13 @@ public class DoctorController {
 
     private final TokenRepository tokenRepository;
 
+    /**
+     * Get doctor page string.
+     *
+     * @param access_token the access token
+     * @param model        the model
+     * @return the string
+     */
     @GetMapping("/home")
     public String getDoctorPage(@RequestParam String access_token, Model model){
         var email = jwtService.extractUsername(access_token);
@@ -37,6 +47,12 @@ public class DoctorController {
         return "dochome";
     }
 
+    /**
+     * Confirm appointment string.
+     *
+     * @param appointmentId the appointment id
+     * @return the string
+     */
     @PostMapping("/appointments/{appointmentId}/confirm")
     public String confirmAppointment(@PathVariable("appointmentId") Long appointmentId) {
         Appointment appointment = appointmentRepository.findById(appointmentId).orElseThrow();
@@ -50,6 +66,12 @@ public class DoctorController {
         return "redirect:/doctor/home?access_token="+token;
     }
 
+    /**
+     * Decline appointment string.
+     *
+     * @param appointmentId the appointment id
+     * @return the string
+     */
     @PostMapping("/appointments/{appointmentId}/decline")
     public String declineAppointment(@PathVariable("appointmentId") Long appointmentId) {
         Appointment appointment = appointmentRepository.findById(appointmentId).orElseThrow();

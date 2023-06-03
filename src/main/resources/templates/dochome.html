@@ -12,8 +12,6 @@
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">View Clients</a></li>
-        <li><a href="#">Manage Appointments</a></li>
         <li><a href="#">Logout</a></li>
       </ul>
     </nav>
@@ -24,7 +22,7 @@
 <section class="avatar-section">
   <div class="container">
     <h2>Avatar</h2>
-    <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Random Avatar Image">
+    <img th:src="@{/img/doctor3.webp}" src="../static/img/doctor3.webp" alt="Doctor Name">
   </div>
 </section>
 
@@ -35,6 +33,7 @@
     <p>First Name: <span th:text="${user.firstName}"></span></p>
     <p>Last Name: <span th:text="${user.lastName}"></span></p>
     <p>Email: <span th:text="${user.email}"></span></p>
+    <p>Date of Birth: <span th:text="${user.dateOfBirth}"></span></p>
   </div>
 </section>
 
@@ -47,8 +46,11 @@
         <th>Client ID</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
         <th>Email</th>
         <th>Date and Time</th>
+        <th>Confirmation</th>
       </tr>
       </thead>
       <tbody>
@@ -56,10 +58,14 @@
         <td th:text="${client.id}"></td>
         <td th:text="${client.user.firstName}"></td>
         <td th:text="${client.user.lastName}"></td>
+        <td th:text="${client.user.dateOfBirth}"></td>
+        <td th:text="${client.user.gender}"></td>
         <td th:text="${client.user.email}"></td>
         <td th:text="${client.dateTime}"></td>
-        <td th:text="${client.confirmed}"></td>
         <td>
+          <span th:text="${client.confirmed} ? 'Confirmed' : 'Unconfirmed'"></span>
+        </td>
+        <td class="appointment-cell">
           <form th:action="@{/doctor/appointments/{appointmentId}/confirm(appointmentId=${client.id})}" method="post">
             <input type="submit" value="Confirm" th:disabled="${client.confirmed}">
           </form>

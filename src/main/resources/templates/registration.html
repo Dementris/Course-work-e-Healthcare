@@ -31,6 +31,14 @@
       <input type="password" id="confirmPassword" name="confirmPassword" required>
       <span id="passwordError" class="error-message"></span>
 
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" th:field="*{gender}" class="custom-select">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select><br>
+      <label for="dateOfBirth">Date of Birth:</label>
+      <input id="dateOfBirth" type="date" name="dateOfBirth">
+
       <button type="submit" class="cta-button">Register</button>
     </form>
   </div>

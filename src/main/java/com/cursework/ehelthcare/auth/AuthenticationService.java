@@ -23,6 +23,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
+/**
+ * The type Authentication service.
+ */
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -33,8 +36,13 @@ public class AuthenticationService {
   private final AuthenticationManager authenticationManager;
 
 
-
-  public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    /**
+     * Authenticate authentication response.
+     *
+     * @param request the request
+     * @return the authentication response
+     */
+    public AuthenticationResponse authenticate(AuthenticationRequest request) {
     authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(
             request.getEmail(),
@@ -75,7 +83,14 @@ public class AuthenticationService {
     tokenRepository.saveAll(validUserTokens);
   }
 
-  public void refreshToken(
+    /**
+     * Refresh token.
+     *
+     * @param request  the request
+     * @param response the response
+     * @throws IOException the io exception
+     */
+    public void refreshToken(
           HttpServletRequest request,
           HttpServletResponse response
   ) throws IOException {

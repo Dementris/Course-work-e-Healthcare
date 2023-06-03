@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+/**
+ * The type User service.
+ */
 @Service
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
@@ -26,6 +29,12 @@ public class UserService implements UserDetailsService {
                 new UsernameNotFoundException(String.format(USER_NOT_FOUND,email)));
     }
 
+    /**
+     * Singup user string.
+     *
+     * @param user the user
+     * @return the string
+     */
     public String singupUser(User user){
         boolean userExists = repository.findByEmail(user.getEmail()).isPresent();
 
@@ -45,6 +54,12 @@ public class UserService implements UserDetailsService {
         return token;
     }
 
+    /**
+     * Enable app user int.
+     *
+     * @param email the email
+     * @return the int
+     */
     public int enableAppUser(String email) {
         return repository.enableAppUser(email);
     }
